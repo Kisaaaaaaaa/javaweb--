@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,23 +42,64 @@
         .logout-link:hover {
             background-color: rgba(255, 255, 255, 0.2);
         }
-        
+
         /* 主体内容样式 - 解决被导航栏遮挡问题 */
         .main-content {
-            margin-top: 65px; /* 根据导航栏高度调整，确保内容不被遮挡 */
+            margin-top: 65px;
+            /* 根据导航栏高度调整，确保内容不被遮挡 */
             padding: 20px;
+        }
+
+        .table {
+            min-width: 100%;
+            border-collapse: collapse;
+            margin: 0 0;
+        }
+
+        /* 设置表格单元格边框 */
+        .table td,
+        .table th {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        /* 新增容器样式 */
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 调整页脚样式 */
+        footer {
+            margin-top: auto;
         }
     </style>
 </head>
+
 <body>
-    <!-- 顶部导航栏 -->
-    <nav class="navbar">
-        <h1>智能学习辅助系统</h1>
-        <a href="#" class="logout-link">退出登录</a>
-    </nav>
-    
-    <!-- 主体内容区域 -->
-    <div class="main-content">
+    <div class="container">
+        <!-- 顶部导航栏 -->
+        <nav class="navbar">
+            <h1>智能学习辅助系统</h1>
+            <a href="#" class="logout-link">退出登录</a>
+        </nav>
         <!-- form表单：
          action：表单数据提交的url地址
          method：提交方式
@@ -69,11 +111,12 @@
          2.请求大小没有限制
          注意：表单想要能够采集数据，必须得设置name属性，表示当前表单项的名字
          -->
-        <form action="/save" method="post">
+        <!-- <form action="/save" method="post">
             姓名：<input type="text" name="name"><br><br>
             密码：<input type="password" name="password"><br><br>
-            性别：<input type="radio" name="gender" value="1">男
-            <label for=""><input type="radio" name="gender" value="2">女</label>
+            性别：<input type="radio" name="gender" value="1">男-->
+        <!-- label标签把文字和表单项连成一个整体，点击文本与直接点击表单的效果是一样的 -->
+        <!-- <label for=""><input type="radio" name="gender" value="2">女</label>
             <br><br>
             爱好：<label for=""><input type="checkbox" name="hobby" value="java">java</label>
             <label for=""><input type="checkbox" name="hobby" value="html">html</label>
@@ -86,9 +129,9 @@
 
             时间: <input type="time" name="time"> <br><br>
 
-            日期时间: <input type="datetime-local" name="datetime"> <br><br>
-
-            学历: <select name="degree">
+            日期时间: <input type="datetime-local" name="datetime"> <br><br>-->
+        <!-- value是选项的提交值，选项的显示值是option标签的文本内容 -->
+        <!-- 学历: <select name="degree">
                 <option value="">----------- 请选择 -----------</option>
                 <option value="1">大专</option>
                 <option value="2">本科</option>
@@ -98,14 +141,240 @@
 
             描述: <textarea name="description" cols="30" rows="10"></textarea> <br><br>
 
-            <input type="hidden" name="id" value="1">
+            <input type="hidden" name="id" value="1"> -->
 
-            <!-- 表单常见按钮 -->
-            <input type="button" value="按钮">
+        <!-- 表单常见按钮 -->
+        <!-- <input type="button" value="按钮">
             <input type="reset" value="重置">
             <input type="submit" value="提交">
-            <br>
-        </form>
+            <br> 
+        </form>  -->
+        <!-- 主体内容区域 -->
+        <div class="main-content">
+            <form action="/save" method="post"
+                style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap; width: 100%; background-color: #f8f9fa; padding: 20px; border-radius: 5px; box-sizing: border-box;">
+                <div style="display: flex; align-items: center; gap: 5px; flex: 1; min-width: 150px;">
+                    <label for="name">姓名：</label><input type="text" name="name" placeholder="请输入员工姓名"
+                        style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 3px; box-sizing: border-box;">
+                </div>
+                <div style="display: flex; align-items: center; gap: 5px; flex: 1; min-width: 120px;">
+                    性别：<select name="gender" id=""
+                        style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 3px; box-sizing: border-box;">
+                        <option value="">请选择</option>
+                        <option value="1">男</option>
+                        <option value="2">女</option>
+                    </select>
+                </div>
+                <div style="display: flex; align-items: center; gap: 5px; flex: 1; min-width: 150px;">
+                    职位：<select name="position" id=""
+                        style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 3px; box-sizing: border-box;">
+                        <option value="">请选择</option>
+                        <option value="1">班主任</option>
+                        <option value="2">讲师</option>
+                        <option value="3">学工主管</option>
+                        <option value="4">教研主管</option>
+                    </select>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button type="submit"
+                        style="padding: 8px 20px; background-color: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">查询</button>
+                    <button type="reset"
+                        style="padding: 8px 20px; background-color: #6c757d; color: white; border: none; border-radius: 3px; cursor: pointer;">清空</button>
+                </div>
+            </form>
+            <table class="table table-striped table-bordered">
+                <!-- 定义表头 -->
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>头像</th>
+                        <th>职位</th>
+                        <th>入职日期</th>
+                        <th>最后操作时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <!-- 表格主体部分 -->
+                <tbody>
+                    <tr>
+                        <td>令狐冲</td>
+                        <td>男</td>
+                        <td><img src="https://via.placeholder.com/50" alt="令狐冲" class="avatar"></td>
+                        <td>讲师</td>
+                        <td>2021-03-15</td>
+                        <td>2023-07-30T12:00:00Z</td>
+                        <td class="btn-group">
+                            <button>编辑</button>
+                            <button>删除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>任盈盈</td>
+                        <td>女</td>
+                        <td><img src="https://via.placeholder.com/50" alt="任盈盈" class="avatar"></td>
+                        <td>学工主管</td>
+                        <td>2020-04-10</td>
+                        <td>2023-07-29T15:00:00Z</td>
+                        <td class="btn-group">
+                            <button>编辑</button>
+                            <button>删除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>岳不群</td>
+                        <td>男</td>
+                        <td><img src="https://via.placeholder.com/50" alt="岳不群" class="avatar"></td>
+                        <td>教研主管</td>
+                        <td>2019-01-01</td>
+                        <td>2023-07-30T10:00:00Z</td>
+                        <td class="btn-group">
+                            <button>编辑</button>
+                            <button>删除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>宁中则</td>
+                        <td>女</td>
+                        <td><img src="https://via.placeholder.com/50" alt="宁中则" class="avatar"></td>
+                        <td>班主任</td>
+                        <td>2018-06-01</td>
+                        <td>2023-07-29T09:00:00Z</td>
+                        <td class="btn-group">
+                            <button>编辑</button>
+                            <button>删除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>林平之</td>
+                        <td>男</td>
+                        <td><img src="https://via.placeholder.com/50" alt="林平之" class="avatar"></td>
+                        <td>讲师</td>
+                        <td>2022-05-20</td>
+                        <td>2023-08-01T14:30:00Z</td>
+                        <td class="btn-group">
+                            <button>编辑</button>
+                            <button>删除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>岳灵珊</td>
+                        <td>女</td>
+                        <td><img src="https://via.placeholder.com/50" alt="岳灵珊" class="avatar"></td>
+                        <td>班主任</td>
+                        <td>2021-09-12</td>
+                        <td>2023-08-02T11:15:00Z</td>
+                        <td class="btn-group">
+                            <button>编辑</button>
+                            <button>删除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>左冷禅</td>
+                        <td>男</td>
+                        <td><img src="https://via.placeholder.com/50" alt="左冷禅" class="avatar"></td>
+                        <td>教研主管</td>
+                        <td>2017-11-03</td>
+                        <td>2023-07-28T16:45:00Z</td>
+                        <td class="btn-group">
+                            <button>编辑</button>
+                            <button>删除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>仪琳</td>
+                        <td>女</td>
+                        <td><img src="https://via.placeholder.com/50" alt="仪琳" class="avatar"></td>
+                        <td>学工主管</td>
+                        <td>2020-02-18</td>
+                        <td>2023-08-03T09:20:00Z</td>
+                        <td class="btn-group">
+                            <button>编辑</button>
+                            <button>删除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>田伯光</td>
+                        <td>男</td>
+                        <td><img src="https://via.placeholder.com/50" alt="田伯光" class="avatar"></td>
+                        <td>讲师</td>
+                        <td>2019-07-22</td>
+                        <td>2023-07-31T13:10:00Z</td>
+                        <td class="btn-group">
+                            <button>编辑</button>
+                            <button>删除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>定逸师太</td>
+                        <td>女</td>
+                        <td><img src="https://via.placeholder.com/50" alt="定逸师太" class="avatar"></td>
+                        <td>班主任</td>
+                        <td>2018-12-05</td>
+                        <td>2023-08-01T10:05:00Z</td>
+                        <td class="btn-group">
+                            <button>编辑</button>
+                            <button>删除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>不戒和尚</td>
+                        <td>男</td>
+                        <td><img src="https://via.placeholder.com/50" alt="不戒和尚" class="avatar"></td>
+                        <td>学工主管</td>
+                        <td>2016-08-14</td>
+                        <td>2023-07-27T17:30:00Z</td>
+                        <td class="btn-group">
+                            <button>编辑</button>
+                            <button>删除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>哑婆婆</td>
+                        <td>女</td>
+                        <td><img src="https://via.placeholder.com/50" alt="哑婆婆" class="avatar"></td>
+                        <td>教研主管</td>
+                        <td>2017-03-09</td>
+                        <td>2023-08-04T08:45:00Z</td>
+                        <td class="btn-group">
+                            <button>编辑</button>
+                            <button>删除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>方证大师</td>
+                        <td>男</td>
+                        <td><img src="https://via.placeholder.com/50" alt="方证大师" class="avatar"></td>
+                        <td>讲师</td>
+                        <td>2015-05-30</td>
+                        <td>2023-08-02T14:20:00Z</td>
+                        <td class="btn-group">
+                            <button>编辑</button>
+                            <button>删除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>冲虚道长</td>
+                        <td>男</td>
+                        <td><img src="https://via.placeholder.com/50" alt="冲虚道长" class="avatar"></td>
+                        <td>教研主管</td>
+                        <td>2016-10-11</td>
+                        <td>2023-07-29T11:50:00Z</td>
+                        <td class="btn-group">
+                            <button>编辑</button>
+                            <button>删除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 页脚版权区域 -->
+        <footer style="background-color: #6c757d; color: white; text-align: center; padding: 20px 0; margin-top: 30px;">
+            <div>江苏传智播客教育科技股份有限公司</div>
+            <div>版权所有 Copyright 2006-2024 All Rights Reserved</div>
+        </footer>
     </div>
 </body>
+
 </html>
