@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div id="app">
+        <button id="btn1" @click="search1">get方式异步请求</button>
+        <button id="btn2" @click="search2">post方式异步请求</button>
+   </div>
+   <!-- 一定要加type="module" -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+   <script type="module">
+    import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+    createApp({
+        data()
+        {
+            return{
+
+            }
+
+        },
+        methods:{
+            // 在使用axios时，在axios之后，输入 thenc 会自动生成成功及失败回调函数结构 。
+            search1()
+            {
+                axios.get('https://mock.apifox.cn/m1/3083103-0-default/emps/list').then((result) => {
+                    console.log(result);
+                }).catch((err) => {
+                    console.log(err);
+                });
+            },
+            search2()
+            {
+                // 向服务器发送数据时，需要将数据转换为字符串格式。
+                // 因此，在 POST 请求中，"id=1" 表示向服务器发送的数据内容。它的意思是：请求体里包含一个名为 id 的参数，其值为 1。
+                axios.post('https://mock.apifox.cn/m1/3083103-0-default/emps/update',"id=1").then((result) => {
+                    console.log(result.data);
+                }).catch((err) => {
+                    console.log(err);
+                });
+            }
+            //GET 用于查，POST 用于增删改。两者在 axios 的用法和参数传递上也有区别
+        }
+    }).mount('#app')
+    </script>
+</body>
+</html>

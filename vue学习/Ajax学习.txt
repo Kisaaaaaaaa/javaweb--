@@ -1,0 +1,19 @@
+   Ajax的作用：
+   1.数据交换：通过Ajax可以给服务器发送请求，并获取服务区响应的数据
+   2.异步交互：可以在不重新加载整个界面的情况下，与服务器交换数据并更新部分网页的技术
+
+   Ajax演示： 
+	GET请求:  https://mock.apifox.cn/m1/3083103-0-default/emps/list
+	
+	POST请求: https://mock.apifox.cn/m1/3083103-0-default/emps/update
+
+
+    
+Ajax员工列表案例地址： 
+	
+	https://web-server.itheima.net/emps/list
+	
+	https://web-server.itheima.net/emps/list?name=xxx&gender=xxx&job=xxx
+
+
+    在使用axios时，在axios之后，输入 thenc 会自动生成成功及失败回调函数结构 。

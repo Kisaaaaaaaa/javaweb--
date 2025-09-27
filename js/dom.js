@@ -15,3 +15,11 @@
 （1）focus：获得焦点
 （2）blur：失去焦点
 */
+
+//js文件之间可以通过import和export来进行相互调用
+//export用于导出变量和函数
+//import用于导入变量和函数
+//在使用import导入时，可以使用as关键字来重命名导入的变量和函数
+//例如：import {add as addNum} from './math.js'
+//这里将math.js文件中的add函数重命名为addNum
+//在当前文件中就可以使用addNum来调用add函数
