@@ -375,6 +375,20 @@
             <div>版权所有 Copyright 2006-2024 All Rights Reserved</div>
         </footer>
     </div>
+    <script>
+        //通过js为上述表格中的数据添加事件监听，实现鼠标进入后，背景颜色为灰色，鼠标离开后，背景颜色为白色
+        const rows = document.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.backgroundColor = '#f0f0f0';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.style.backgroundColor = '';
+            });
+        });
+
+    </script>
+
 </body>
 
 </html>

@@ -17,5 +17,47 @@
 (5)string:字符串,单引号和双引号都可以
 */
 
+//模版字符串语法：
+// 1.使用反引号（`）来定义字符串
+// 2.在字符串中可以使用${}来插入变量
 
-alert("hello world");
+let name = "张三";
+
+alert(`你好，${name}`);
+//函数定义，具名函数
+function add(a,b)
+{
+    return a+b
+}
+
+//匿名函数
+// let add=function(a,b)
+// {
+//     return a+b;
+// }
+
+//箭头函数,在箭头函数中this不指向当前对象
+// let add=(a,b)=>
+// {
+//     return a+b;
+// }
+
+user={
+    name:"李四",//逗号分隔
+    age:20,
+    //对象的方法
+    sayHello:function()
+    {
+        alert(`你好，${this.name}`);
+
+    }
+}
+//json常作为数据载体，在网络中进行数据传输
+//json数据格式和对象之间的相互转换
+let jsonStr1=`{"name":"王五","age":30}`
+let obj1=JSON.parse(jsonStr1)//json转对象
+console.log(obj1)
+
+let obj2={name:"赵六",age:40}
+let jsonStr2=JSON.stringify(obj2)//对象转json
+console.log(jsonStr2)

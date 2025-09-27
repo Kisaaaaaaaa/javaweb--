@@ -6,6 +6,21 @@
     <title>Document</title>
 </head>
 <body>
-    <script src="index.js"></script>
+    <button id="btn1">点击我</button>
+    <button id="btn2">点击我</button>
+
+    <script>
+        let btn=document.getElementById("btn");
+       btn1.addEventListener('click',function()
+    {
+        console.log("hello");
+    })
+
+        let btn2=document.getElementById("btn2");
+        btn2.onclick=function()
+        {
+            console.log("world");
+        }
+    </script>
 </body>
 </html>
